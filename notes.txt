@@ -1,0 +1,2 @@
+node.js API: https://nodejs.org/api/
+Electron API: https://electronjs.org/docs/api

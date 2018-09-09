@@ -1,0 +1,22 @@
+{
+  "name": "electron-make_gui",
+  "version": "0.0.1",
+  "description": "Graphical wrapper around custom Make targets",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/KevinWMatthews/electron-make_gui",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "author": "Kevin W Matthews",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^2.0.0"
+  }
+}
