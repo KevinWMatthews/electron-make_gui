@@ -7,11 +7,15 @@ let project_root;
 
 let btn_select_source = document.getElementById('btn_select_source');
 btn_select_source.addEventListener('click', (event) => {
-  let source_dir = dialog.showOpenDialog({
+  let dialog_properties = {
     properties: ['openDirectory', 'multiSelections']
+  };
+  dialog.showOpenDialog(dialog_properties, (filePaths) => {
+    // Hard-code to a single file path for now.
+    let file_path = filePaths[0];
+    event.target.innerHTML = file_path;
+    project_root = file_path;
   });
-  event.target.innerHTML = source_dir;
-  project_root = source_dir;
 });
 
 let btn_test = document.getElementById('btn_test');
