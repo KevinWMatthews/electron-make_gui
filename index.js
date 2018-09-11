@@ -53,3 +53,20 @@ btn_compile.addEventListener('click', (event) => {
     })
   }
 });
+
+let btn_run = document.getElementById('btn_run');
+btn_run.addEventListener('click', (event) => {
+  if (project_root) {
+    const run_program = spawn('./bin/terminate_forked', {'cwd': project_root});
+
+    run_program.stdout.on('data', (data) => {
+      console.log(`stdout: ${data}`);
+    });
+    run_program.stderr.on('data', (data) => {
+      console.log(`stderr: ${data}`);
+    });
+    run_program.on('close', (exit_code) => {
+      console.log(`Exited with code: ${exit_code}`);
+    });
+  }
+});

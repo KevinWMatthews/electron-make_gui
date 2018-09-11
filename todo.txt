@@ -1,1 +1,6 @@
 Make project root directory dialog box remember its current directory.
+
+Capture errors:
+  What if programs don't exist?
+  Make system doesn't exist?
+  etc
