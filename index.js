@@ -18,20 +18,38 @@ btn_select_source.addEventListener('click', (event) => {
   });
 });
 
-let btn_test = document.getElementById('btn_test');
-btn_test.addEventListener('click', (event) => {
+let btn_clean = document.getElementById('btn_clean');
+btn_clean.addEventListener('click', (event) => {
   if (project_root) {   //TODO look into this conditional!!
     // What if this takes a long time to execute? Will we lose scope?
-    const ls = spawn('ls', ['-lh', project_root]);
+    const make_clean = spawn('make', ['clean'], {'cwd': project_root});
 
-    ls.stdout.on('data', (data) => {
+    make_clean.stdout.on('data', (data) => {
       console.log(`stdout: ${data}`);
     });
-    ls.stderr.on('data', (data) => {
+    make_clean.stderr.on('data', (data) => {
       console.log(`stderr: ${data}`);
     })
-    ls.on('close', (exit_code) => {
+    make_clean.on('close', (exit_code) => {
       console.log(`Exited with code: ${exit_code}`);
     })
   }
-})
+});
+
+let btn_compile = document.getElementById('btn_compile');
+btn_compile.addEventListener('click', (event) => {
+  if (project_root) {   //TODO look into this conditional!!
+    // What if this takes a long time to execute? Will we lose scope?
+    const make_all = spawn('make', [], {'cwd': project_root});
+
+    make_all.stdout.on('data', (data) => {
+      console.log(`stdout: ${data}`);
+    });
+    make_all.stderr.on('data', (data) => {
+      console.log(`stderr: ${data}`);
+    })
+    make_all.on('close', (exit_code) => {
+      console.log(`Exited with code: ${exit_code}`);
+    })
+  }
+});
