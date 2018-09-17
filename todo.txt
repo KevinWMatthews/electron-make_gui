@@ -5,11 +5,14 @@ Print output to new window?
   Then learn to open a new window
   Then learn to print to the new window
     IPC? Send output to new window? Execute command in new window?
+  Can/how do we print color?
 
 Capture errors:
   What if programs don't exist?
   Make system doesn't exist?
   etc
+  What if we run or test while still compiling? Commands could be executed too quickly.
+  Run without compile spits out unhandled js ChildProcess error.
 
 What do we run for tests?
   make test
