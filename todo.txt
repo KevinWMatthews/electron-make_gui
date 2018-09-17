@@ -1,6 +1,17 @@
 Make project root directory dialog box remember its current directory.
 
+Print output to new window?
+  First print to text box
+  Then learn to open a new window
+  Then learn to print to the new window
+    IPC? Send output to new window? Execute command in new window?
+
 Capture errors:
   What if programs don't exist?
   Make system doesn't exist?
   etc
+
+What do we run for tests?
+  make test
+  ctest
+  individual executables
