@@ -14,7 +14,7 @@ document.getElementById('btn_select_source').innerHTML = project_root;
 
 
 // HTML element must respond to the innerHTML() method.
-function printOutputToHtml(child_process, element) {
+function printProcessOutputToHtml(child_process, element) {
   child_process.stdout.on('data', (data) => {
     element.innerHTML += convert.toHtml(`${data}`);
   });
@@ -53,7 +53,7 @@ btn_clean.addEventListener('click', (event) => {
     output.innerHTML = `Executing command: ${command} ${args}\n`;
 
     const child = spawn('make', ['clean'], {'cwd': project_root});
-    printOutputToHtml(child, output);
+    printProcessOutputToHtml(child, output);
   }
 });
 
@@ -67,7 +67,7 @@ btn_compile.addEventListener('click', (event) => {
     output.innerHTML = `Executing command: ${command} ${args}\n`;
 
     const child = spawn(command, args, {'cwd': project_root});
-    printOutputToHtml(child, output);
+    printProcessOutputToHtml(child, output);
   }
 });
 
@@ -80,6 +80,6 @@ btn_run.addEventListener('click', (event) => {
     output.innerHTML = `Executing command: ${command} ${args}\n`;
 
     const child = spawn(command, args, {'cwd': project_root});
-    printOutputToHtml(child, output);
+    printProcessOutputToHtml(child, output);
   }
 });
