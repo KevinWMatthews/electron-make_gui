@@ -34,11 +34,7 @@ btn_clean.addEventListener('click', (event) => {
   let args = ['clean'];
   let options = {'cwd': project_root};
   let log = document.getElementById('pre_output_log');
-
-  clearOutputLog(log);
-  sendToOutputLog(log, `Executing command: ${command} ${args}\n`);
-  const child = spawn('make', ['clean'], options);
-  printProcessOutputToHtml(child, log);
+  spawnAndLog(command, args, options, log);
 });
 
 let btn_compile = document.getElementById('btn_compile');
@@ -50,11 +46,7 @@ btn_compile.addEventListener('click', (event) => {
   let args = ['CLICOLOR_FORCE=1'];
   let options = {'cwd': project_root};
   let log = document.getElementById('pre_output_log');
-
-  clearOutputLog(log);
-  sendToOutputLog(log, `Executing command: ${command} ${args}\n`);
-  const child = spawn(command, args, options);
-  printProcessOutputToHtml(child, log);
+  spawnAndLog(command, args, options, log);
 });
 
 let btn_run = document.getElementById('btn_run');
@@ -66,13 +58,19 @@ btn_run.addEventListener('click', (event) => {
   let args = [];
   let options = {'cwd': project_root};
   let log = document.getElementById('pre_output_log');
+  spawnAndLog(command, args, options, log);
+});
 
+// Spawn the command in a child process with the given arguments and options.
+// Colorize and send all output to the log element.
+//
+// log must respond to innerHTML.
+function spawnAndLog(command, args, options, log) {
   clearOutputLog(log);
   sendToOutputLog(log, `Executing command: ${command} ${args}\n`);
   const child = spawn(command, args, options);
   printProcessOutputToHtml(child, log);
-});
-
+}
 
 // Capture output from child_process events and send it to HTML.
 function printProcessOutputToHtml(child_process, element) {
