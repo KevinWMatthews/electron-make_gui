@@ -13,29 +13,29 @@ project_root = '/home/kevin/coding/c/build_terminate_program';
 document.getElementById('btn_select_source').innerHTML = project_root;
 
 // Clear the inner HTML of the element.
-function clearHtml(element) {
+function clearOutputLog(element) {
   element.innerHTML = '';
 }
 
 // Colorize input data (convert it to a span) and add it to the element.
 // element must respond to the innerHTML() method.
-function sendToHtml(element, data) {
+function sendToOutputLog(element, data) {
   element.innerHTML += convert.toHtml(`${data}`);
 }
 
 // Capture output from child_process events and send it to HTML.
 function printProcessOutputToHtml(child_process, element) {
   child_process.stdout.on('data', (data) => {
-    sendToHtml(element, data);
+    sendToOutputLog(element, data);
   });
   child_process.stderr.on('data', (data) => {
-    sendToHtml(element, data);
+    sendToOutputLog(element, data);
   });
   child_process.on('error', (err) => {
-    sendToHtml(element, `Error: ${err.message}\n`);
+    sendToOutputLog(element, `Error: ${err.message}\n`);
   });
   child_process.on('close', (exit_code) => {
-    sendToHtml(element, `Exited with code: ${exit_code}\n`);
+    sendToOutputLog(element, `Exited with code: ${exit_code}\n`);
   });
 }
 
@@ -59,12 +59,12 @@ btn_clean.addEventListener('click', (event) => {
     // What if this takes a long time to execute? Will we lose scope?
     let command = 'make';
     let args = ['clean'];
-    let output = document.getElementById('pre_output');
-    clearHtml(output);
-    sendToHtml(output, `Executing command: ${command} ${args}\n`);
+    let log = document.getElementById('pre_output_log');
+    clearOutputLog(log);
+    sendToOutputLog(log, `Executing command: ${command} ${args}\n`);
 
     const child = spawn('make', ['clean'], {'cwd': project_root});
-    printProcessOutputToHtml(child, output);
+    printProcessOutputToHtml(child, log);
   }
 });
 
@@ -74,12 +74,12 @@ btn_compile.addEventListener('click', (event) => {
     // What if this takes a long time to execute? Will we lose scope?
     let command = 'make';
     let args = ['CLICOLOR_FORCE=1'];
-    let output = document.getElementById('pre_output');
-    clearHtml(output);
-    sendToHtml(output, `Executing command: ${command} ${args}\n`);
+    let log = document.getElementById('pre_output_log');
+    clearOutputLog(log);
+    sendToOutputLog(log, `Executing command: ${command} ${args}\n`);
 
     const child = spawn(command, args, {'cwd': project_root});
-    printProcessOutputToHtml(child, output);
+    printProcessOutputToHtml(child, log);
   }
 });
 
@@ -88,11 +88,11 @@ btn_run.addEventListener('click', (event) => {
   if (project_root) {
     let command = './bin/terminate_forked';
     let args = [];
-    let output = document.getElementById('pre_output');
-    clearHtml(output);
-    sendToHtml(output, `Executing command: ${command} ${args}\n`);
+    let log = document.getElementById('pre_output_log');
+    clearOutputLog(log);
+    sendToOutputLog(log, `Executing command: ${command} ${args}\n`);
 
     const child = spawn(command, args, {'cwd': project_root});
-    printProcessOutputToHtml(child, output);
+    printProcessOutputToHtml(child, log);
   }
 });
