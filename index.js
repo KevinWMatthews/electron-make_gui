@@ -12,34 +12,6 @@ let project_root;
 project_root = '/home/kevin/coding/c/build_terminate_program';
 document.getElementById('btn_select_source').innerHTML = project_root;
 
-// Clear the inner HTML of the element.
-function clearOutputLog(element) {
-  element.innerHTML = '';
-}
-
-// Colorize input data (convert it to a span) and add it to the element.
-// element must respond to the innerHTML() method.
-function sendToOutputLog(element, data) {
-  element.innerHTML += convert.toHtml(`${data}`);
-}
-
-// Capture output from child_process events and send it to HTML.
-function printProcessOutputToHtml(child_process, element) {
-  child_process.stdout.on('data', (data) => {
-    sendToOutputLog(element, data);
-  });
-  child_process.stderr.on('data', (data) => {
-    sendToOutputLog(element, data);
-  });
-  child_process.on('error', (err) => {
-    sendToOutputLog(element, `Error: ${err.message}\n`);
-  });
-  child_process.on('close', (exit_code) => {
-    sendToOutputLog(element, `Exited with code: ${exit_code}\n`);
-  });
-}
-
-
 let btn_select_source = document.getElementById('btn_select_source');
 btn_select_source.addEventListener('click', (event) => {
   let dialog_properties = {
@@ -99,3 +71,31 @@ btn_run.addEventListener('click', (event) => {
     printProcessOutputToHtml(child, log);
   }
 });
+
+
+// Capture output from child_process events and send it to HTML.
+function printProcessOutputToHtml(child_process, element) {
+  child_process.stdout.on('data', (data) => {
+    sendToOutputLog(element, data);
+  });
+  child_process.stderr.on('data', (data) => {
+    sendToOutputLog(element, data);
+  });
+  child_process.on('error', (err) => {
+    sendToOutputLog(element, `Error: ${err.message}\n`);
+  });
+  child_process.on('close', (exit_code) => {
+    sendToOutputLog(element, `Exited with code: ${exit_code}\n`);
+  });
+}
+
+// Clear the inner HTML of the element.
+function clearOutputLog(element) {
+  element.innerHTML = '';
+}
+
+// Colorize input data (convert it to a span) and add it to the element.
+// element must respond to the innerHTML() method.
+function sendToOutputLog(element, data) {
+  element.innerHTML += convert.toHtml(`${data}`);
+}
