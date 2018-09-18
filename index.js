@@ -59,11 +59,12 @@ btn_clean.addEventListener('click', (event) => {
     // What if this takes a long time to execute? Will we lose scope?
     let command = 'make';
     let args = ['clean'];
+    let options = {'cwd': project_root};
     let log = document.getElementById('pre_output_log');
+
     clearOutputLog(log);
     sendToOutputLog(log, `Executing command: ${command} ${args}\n`);
-
-    const child = spawn('make', ['clean'], {'cwd': project_root});
+    const child = spawn('make', ['clean'], options);
     printProcessOutputToHtml(child, log);
   }
 });
@@ -74,11 +75,12 @@ btn_compile.addEventListener('click', (event) => {
     // What if this takes a long time to execute? Will we lose scope?
     let command = 'make';
     let args = ['CLICOLOR_FORCE=1'];
+    let options = {'cwd': project_root};
     let log = document.getElementById('pre_output_log');
+
     clearOutputLog(log);
     sendToOutputLog(log, `Executing command: ${command} ${args}\n`);
-
-    const child = spawn(command, args, {'cwd': project_root});
+    const child = spawn(command, args, options);
     printProcessOutputToHtml(child, log);
   }
 });
@@ -88,11 +90,12 @@ btn_run.addEventListener('click', (event) => {
   if (project_root) {
     let command = './bin/terminate_forked';
     let args = [];
+    let options = {'cwd': project_root};
     let log = document.getElementById('pre_output_log');
+
     clearOutputLog(log);
     sendToOutputLog(log, `Executing command: ${command} ${args}\n`);
-
-    const child = spawn(command, args, {'cwd': project_root});
+    const child = spawn(command, args, options);
     printProcessOutputToHtml(child, log);
   }
 });
