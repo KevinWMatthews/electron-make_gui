@@ -27,3 +27,6 @@ How to test my code?
 Pretty print args[] array if we have multiple.
   Right now it prints as "arg1,arg2".
   I'd like it to be "arg1 arg2".
+
+I've been very lazy with the if (project_root) conditional.
+  Think about this!

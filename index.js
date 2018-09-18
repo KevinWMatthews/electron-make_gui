@@ -27,49 +27,50 @@ btn_select_source.addEventListener('click', (event) => {
 
 let btn_clean = document.getElementById('btn_clean');
 btn_clean.addEventListener('click', (event) => {
-  if (project_root) {   //TODO look into this conditional!!
-    // What if this takes a long time to execute? Will we lose scope?
-    let command = 'make';
-    let args = ['clean'];
-    let options = {'cwd': project_root};
-    let log = document.getElementById('pre_output_log');
-
-    clearOutputLog(log);
-    sendToOutputLog(log, `Executing command: ${command} ${args}\n`);
-    const child = spawn('make', ['clean'], options);
-    printProcessOutputToHtml(child, log);
+  if (!project_root) {
+    return;
   }
+  let command = 'make';
+  let args = ['clean'];
+  let options = {'cwd': project_root};
+  let log = document.getElementById('pre_output_log');
+
+  clearOutputLog(log);
+  sendToOutputLog(log, `Executing command: ${command} ${args}\n`);
+  const child = spawn('make', ['clean'], options);
+  printProcessOutputToHtml(child, log);
 });
 
 let btn_compile = document.getElementById('btn_compile');
 btn_compile.addEventListener('click', (event) => {
-  if (project_root) {   //TODO look into this conditional!!
-    // What if this takes a long time to execute? Will we lose scope?
-    let command = 'make';
-    let args = ['CLICOLOR_FORCE=1'];
-    let options = {'cwd': project_root};
-    let log = document.getElementById('pre_output_log');
-
-    clearOutputLog(log);
-    sendToOutputLog(log, `Executing command: ${command} ${args}\n`);
-    const child = spawn(command, args, options);
-    printProcessOutputToHtml(child, log);
+  if (!project_root) {
+    return;
   }
+  let command = 'make';
+  let args = ['CLICOLOR_FORCE=1'];
+  let options = {'cwd': project_root};
+  let log = document.getElementById('pre_output_log');
+
+  clearOutputLog(log);
+  sendToOutputLog(log, `Executing command: ${command} ${args}\n`);
+  const child = spawn(command, args, options);
+  printProcessOutputToHtml(child, log);
 });
 
 let btn_run = document.getElementById('btn_run');
 btn_run.addEventListener('click', (event) => {
-  if (project_root) {
-    let command = './bin/terminate_forked';
-    let args = [];
-    let options = {'cwd': project_root};
-    let log = document.getElementById('pre_output_log');
-
-    clearOutputLog(log);
-    sendToOutputLog(log, `Executing command: ${command} ${args}\n`);
-    const child = spawn(command, args, options);
-    printProcessOutputToHtml(child, log);
+  if (!project_root) {
+    return;
   }
+  let command = './bin/terminate_forked';
+  let args = [];
+  let options = {'cwd': project_root};
+  let log = document.getElementById('pre_output_log');
+
+  clearOutputLog(log);
+  sendToOutputLog(log, `Executing command: ${command} ${args}\n`);
+  const child = spawn(command, args, options);
+  printProcessOutputToHtml(child, log);
 });
 
 
