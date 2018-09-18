@@ -4,9 +4,8 @@ const Convert = require('ansi-to-html');
 
 // Wait until DOM is ready?
 
-var convert = new Convert();
-
 let project_root;
+const convert = new Convert();
 
 // Testing only, because I'm too lazy to figure out the right way to test this.
 project_root = '/home/kevin/coding/c/build_terminate_program';

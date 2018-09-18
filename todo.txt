@@ -4,11 +4,9 @@ Directory selection:
 
 
 Print output to new window?
-  First print to text box
   Then learn to open a new window
   Then learn to print to the new window
     IPC? Send output to new window? Execute command in new window?
-  Can/how do we print color?
 
 Capture errors:
   What if programs don't exist?
@@ -30,3 +28,5 @@ Pretty print args[] array if we have multiple.
 
 I've been very lazy with the if (project_root) conditional.
   Think about this!
+
+Figure out what to do with the DOM - I've been lazy.
