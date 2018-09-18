@@ -44,9 +44,9 @@ btn_clean.addEventListener('click', (event) => {
   if (project_root) {   //TODO look into this conditional!!
     // What if this takes a long time to execute? Will we lose scope?
     let command = 'make';
-    let options = ['clean'];
+    let args = ['clean'];
     let output = document.getElementById('pre_output');
-    output.innerHTML = `Executing command: ${command} ${options}\n`;
+    output.innerHTML = `Executing command: ${command} ${args}\n`;
 
     const child = spawn('make', ['clean'], {'cwd': project_root});
     printOutputToHtml(child, output);
@@ -58,11 +58,11 @@ btn_compile.addEventListener('click', (event) => {
   if (project_root) {   //TODO look into this conditional!!
     // What if this takes a long time to execute? Will we lose scope?
     let command = 'make';
-    let options = [];
+    let args = [];
     let output = document.getElementById('pre_output');
-    output.innerHTML = `Executing command: ${command} ${options}\n`;
+    output.innerHTML = `Executing command: ${command} ${args}\n`;
 
-    const child = spawn(command, options, {'cwd': project_root});
+    const child = spawn(command, args, {'cwd': project_root});
     printOutputToHtml(child, output);
   }
 });
@@ -71,11 +71,11 @@ let btn_run = document.getElementById('btn_run');
 btn_run.addEventListener('click', (event) => {
   if (project_root) {
     let command = './bin/terminate_forked';
-    let options = [];
+    let args = [];
     let output = document.getElementById('pre_output');
-    output.innerHTML = `Executing command: ${command} ${options}\n`;
+    output.innerHTML = `Executing command: ${command} ${args}\n`;
 
-    const child = spawn(command, options, {'cwd': project_root});
+    const child = spawn(command, args, {'cwd': project_root});
     printOutputToHtml(child, output);
   }
 });
