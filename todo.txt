@@ -1,4 +1,7 @@
-Make project root directory dialog box remember its current directory.
+Directory selection:
+    remember current directory
+    handle failure
+
 
 Print output to new window?
   First print to text box
@@ -18,3 +21,5 @@ What do we run for tests?
   make test
   ctest
   individual executables
+
+How to test my code?

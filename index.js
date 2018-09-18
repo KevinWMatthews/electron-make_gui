@@ -1,7 +1,10 @@
 const {dialog} = require('electron').remote;
 const {spawn} = require('child_process');
+const Convert = require('ansi-to-html');
 
 // Wait until DOM is ready?
+
+var convert = new Convert();
 
 let project_root;
 
@@ -9,19 +12,20 @@ let project_root;
 project_root = '/home/kevin/coding/c/build_terminate_program';
 document.getElementById('btn_select_source').innerHTML = project_root;
 
+
 // HTML element must respond to the innerHTML() method.
 function printOutputToHtml(child_process, element) {
   child_process.stdout.on('data', (data) => {
-    element.innerHTML += data;
+    element.innerHTML += convert.toHtml(`${data}`);
   });
   child_process.stderr.on('data', (data) => {
-    element.innerHTML += data;
+    element.innerHTML += convert.toHtml(`${data}`);
   });
   child_process.on('error', (err) => {
-    element.innerHTML += `Error: ${err.message}\n`;
+    element.innerHTML += convert.toHtml(`Error: ${err.message}\n`);
   });
   child_process.on('close', (exit_code) => {
-    element.innerHTML += `Exited with code: ${exit_code}\n`;
+    element.innerHTML += convert.toHtml(`Exited with code: ${exit_code}\n`);
   });
 }
 
@@ -58,7 +62,7 @@ btn_compile.addEventListener('click', (event) => {
   if (project_root) {   //TODO look into this conditional!!
     // What if this takes a long time to execute? Will we lose scope?
     let command = 'make';
-    let args = [];
+    let args = ['CLICOLOR_FORCE=1'];
     let output = document.getElementById('pre_output');
     output.innerHTML = `Executing command: ${command} ${args}\n`;
 
