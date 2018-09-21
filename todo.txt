@@ -30,3 +30,6 @@ I've been very lazy with the if (project_root) conditional.
   Think about this!
 
 Figure out what to do with the DOM - I've been lazy.
+
+Document all packages:
+  https://www.npmjs.com/package/ansi-to-html
