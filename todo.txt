@@ -1,3 +1,26 @@
+Test:
+    Should open a new window.
+        Learn how to do this!
+    Test all
+    or
+    Test select
+    Test run
+    and/or
+    Text entry box with executable name(s)?
+
+    Should remember previous tests
+    Should be able to clear selected tests.
+
+    User won't be able to select individual executables until everything
+    has been built.
+        Force them to run test all first?
+        Allow them to?
+
+    Could have checkboxes to enable/disable tests,
+    or a multi-select dropdown.
+
+
+
 Directory selection:
     remember current directory
     handle failure
