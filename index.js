@@ -25,30 +25,6 @@ btn_select_source.addEventListener('click', (event) => {
   });
 });
 
-let select_files = document.getElementById('select_files');
-
-let select_files_add = document.getElementById('select_files_add');
-select_files_add.addEventListener('click', (event) => {
-  let dialog_properties = {
-    properties: ['openFile', 'multiSelections']
-  };
-  file_paths = dialog.showOpenDialog(dialog_properties);
-  if (!file_paths) {
-    return;
-  }
-  file_paths.forEach((element) => {
-    let option = new Option(element);
-    select_files.add(option);
-  });
-});
-
-let select_files_remove = document.getElementById('select_files_remove');
-select_files_remove.addEventListener('click', (event) => {
-  while (select_files.options.selectedIndex != -1) {
-    select_files.remove(select_files.options.selectedIndex);
-  }
-});
-
 let btn_clean = document.getElementById('btn_clean');
 btn_clean.addEventListener('click', (event) => {
   if (!project_root) {
@@ -92,8 +68,32 @@ btn_test.addEventListener('click', (event) => {
   createTestWidow();
 });
 
+//
+// Run
+//
+let select_files = document.getElementById('select_files');
 
+let select_files_add = document.getElementById('select_files_add');
+select_files_add.addEventListener('click', (event) => {
+  let dialog_properties = {
+    properties: ['openFile', 'multiSelections']
+  };
+  file_paths = dialog.showOpenDialog(dialog_properties);
+  if (!file_paths) {
+    return;
+  }
+  file_paths.forEach((element) => {
+    let option = new Option(element);
+    select_files.add(option);
+  });
+});
 
+let select_files_remove = document.getElementById('select_files_remove');
+select_files_remove.addEventListener('click', (event) => {
+  while (select_files.options.selectedIndex != -1) {
+    select_files.remove(select_files.options.selectedIndex);
+  }
+});
 
 let btn_run = document.getElementById('btn_run');
 btn_run.addEventListener('click', (event) => {
@@ -106,6 +106,8 @@ btn_run.addEventListener('click', (event) => {
   let log = document.getElementById('pre_output_log');
   spawnAndLog(command, args, options, log);
 });
+
+
 
 // Spawn the command in a child process with the given arguments and options.
 // Colorize and send all output to the log element.
