@@ -34,6 +34,7 @@ btn_clean.addEventListener('click', (event) => {
   let args = ['clean'];
   let options = {'cwd': project_root};
   let log = document.getElementById('pre_output_log');
+  clearOutputLog(log);
   spawnAndLog(command, args, options, log);
 });
 
@@ -46,6 +47,7 @@ btn_compile.addEventListener('click', (event) => {
   let args = ['CLICOLOR_FORCE=1'];
   let options = {'cwd': project_root};
   let log = document.getElementById('pre_output_log');
+  clearOutputLog(log);
   spawnAndLog(command, args, options, log);
 });
 
@@ -100,11 +102,14 @@ btn_run.addEventListener('click', (event) => {
   if (!project_root) {
     return;
   }
-  let command = './bin/terminate_forked';
+  let commands = [...select_files.options].map(option => option.value);
   let args = [];
   let options = {'cwd': project_root};
   let log = document.getElementById('pre_output_log');
-  spawnAndLog(command, args, options, log);
+  clearOutputLog(log);
+  commands.forEach( (command) => {
+    spawnAndLog(command, args, options, log);
+  });
 });
 
 
@@ -114,7 +119,6 @@ btn_run.addEventListener('click', (event) => {
 //
 // log must respond to innerHTML.
 function spawnAndLog(command, args, options, log) {
-  clearOutputLog(log);
   sendToOutputLog(log, `Executing command: ${command} ${args}\n`);
   const child = spawn(command, args, options);
   printProcessOutputToHtml(child, log);
