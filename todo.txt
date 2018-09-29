@@ -1,6 +1,10 @@
+Learn how to do an easy multi-select.
+
+Each command should be customizable? Could have its own input box.
+
+Could pop up a new window for each main directory that is selected?
+
 Test:
-    Should open a new window.
-        Learn how to do this!
     Test all
     or
     Test select

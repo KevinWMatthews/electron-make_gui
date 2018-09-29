@@ -25,6 +25,22 @@ btn_select_source.addEventListener('click', (event) => {
   });
 });
 
+let select_files = document.getElementById('select_files');
+let select_files_add = document.getElementById('select_files_add');
+select_files_add.addEventListener('click', (event) => {
+  let dialog_properties = {
+    properties: ['openFile', 'multiSelections']
+  };
+  file_paths = dialog.showOpenDialog(dialog_properties);
+  if (!file_paths) {
+    return;
+  }
+  file_paths.forEach((element) => {
+    let option = new Option(element);
+    select_files.add(option);
+  });
+});
+
 let btn_clean = document.getElementById('btn_clean');
 btn_clean.addEventListener('click', (event) => {
   if (!project_root) {
@@ -67,6 +83,9 @@ btn_test.addEventListener('click', (event) => {
   }
   createTestWidow();
 });
+
+
+
 
 let btn_run = document.getElementById('btn_run');
 btn_run.addEventListener('click', (event) => {
