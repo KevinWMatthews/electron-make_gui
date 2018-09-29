@@ -1,7 +1,15 @@
-Learn how to do an easy multi-select.
-    Learn about HTMLOptionsCollection
-    Look up callback in filter() method
-        It doesn't use () or {}
+Figure out how to execute processes sequentially:
+    https://gist.github.com/millermedeiros/4724047
+    May need async or promises.
+        https://zaiste.net/nodejs-child-process-spawn-exec-fork-async-await/
+    Use execFile() instead of spawn()?
+
+Do we need asynchronous execution?
+    Could we execute simultaneously and store the output in different buffers?
+    Would be tough to print in real time, but we could:
+        show/hide output from individual executables
+        rearrange output
+    Maybe we should/could dynamically create/remove the output elements.
 
 Each command should be customizable? Could have its own input box.
 
