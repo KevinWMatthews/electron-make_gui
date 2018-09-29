@@ -26,6 +26,7 @@ btn_select_source.addEventListener('click', (event) => {
 });
 
 let select_files = document.getElementById('select_files');
+
 let select_files_add = document.getElementById('select_files_add');
 select_files_add.addEventListener('click', (event) => {
   let dialog_properties = {
@@ -39,6 +40,13 @@ select_files_add.addEventListener('click', (event) => {
     let option = new Option(element);
     select_files.add(option);
   });
+});
+
+let select_files_remove = document.getElementById('select_files_remove');
+select_files_remove.addEventListener('click', (event) => {
+  while (select_files.options.selectedIndex != -1) {
+    select_files.remove(select_files.options.selectedIndex);
+  }
 });
 
 let btn_clean = document.getElementById('btn_clean');

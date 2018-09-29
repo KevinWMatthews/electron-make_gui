@@ -1,0 +1,6 @@
+// An HTMLSelectElement's .selectedOptions property returns a read-only HTMLCollection.
+// Create an array from its elements using the spread operator, '...'
+// selected_options = [...select_files.selectedOptions];
+// selected_options.forEach( (element) => {
+//   select_files.remove(element.index);
+// });

@@ -1,4 +1,7 @@
 Learn how to do an easy multi-select.
+    Learn about HTMLOptionsCollection
+    Look up callback in filter() method
+        It doesn't use () or {}
 
 Each command should be customizable? Could have its own input box.
 
