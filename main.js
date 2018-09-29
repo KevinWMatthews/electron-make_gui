@@ -8,7 +8,7 @@ function createWindow() {
   mainWindow.loadFile('index.html');
   mainWindow.on('closed', () => {
     mainWindow = null;
-  })
+  });
 }
 
 app.on('ready', createWindow);
