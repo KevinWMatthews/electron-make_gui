@@ -34,3 +34,8 @@ $ npm install
 ```
 $ npm start
 ```
+
+## Documentation
+
+[Electron API](https://electronjs.org/docs/api)
+[node.js API](https://nodejs.org/api/)
