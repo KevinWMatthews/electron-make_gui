@@ -1,4 +1,5 @@
 const {dialog} = require('electron').remote;
+const {BrowserWindow} = require('electron').remote;
 const {spawn} = require('child_process');
 const Convert = require('ansi-to-html');
 
@@ -46,6 +47,25 @@ btn_compile.addEventListener('click', (event) => {
   let options = {'cwd': project_root};
   let log = document.getElementById('pre_output_log');
   spawnAndLog(command, args, options, log);
+});
+
+let testWindow;
+
+function createTestWidow() {
+  testWindow = new BrowserWindow({width: 800, height: 600});
+  testWindow.loadFile('test.html');
+  // if (testWindow) { testWindow.focus() } ?
+  testWindow.on('closed', () => {
+    testWindow = null;
+  });
+}
+
+let btn_test = document.getElementById('btn_test');
+btn_test.addEventListener('click', (event) => {
+  if (!project_root) {
+    return;
+  }
+  createTestWidow();
 });
 
 let btn_run = document.getElementById('btn_run');
