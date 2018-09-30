@@ -2,6 +2,7 @@ Figure out how to execute processes sequentially:
     https://gist.github.com/millermedeiros/4724047
     May need async or promises.
         https://zaiste.net/nodejs-child-process-spawn-exec-fork-async-await/
+        https://www.youtube.com/watch?v=9YkUCxvaLEk
     Use execFile() instead of spawn()?
 
 Do we need asynchronous execution?
