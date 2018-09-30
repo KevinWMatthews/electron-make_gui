@@ -33,9 +33,10 @@ btn_clean.addEventListener('click', (event) => {
   let command = 'make';
   let args = ['clean'];
   let options = {'cwd': project_root};
-  let log = document.getElementById('pre_output_log');
-  clearOutputLog(log);
-  spawnAndLog(command, args, options, log);
+  let log_base = document.getElementById('div_log');
+  clearOutputLog(log_base);
+  let log_element = addLogElement(log_base, 'output_clean');
+  spawnAndLog(command, args, options, log_element);
 });
 
 let btn_compile = document.getElementById('btn_compile');
@@ -140,9 +141,20 @@ function printProcessOutputToHtml(child_process, element) {
   });
 }
 
-// Clear the inner HTML of the element.
+// Add a log element with the given id to the parent element.
+// Returns the new element.
+function addLogElement(parent, id) {
+  element = document.createElement("pre");
+  element.setAttribute('id', id);
+  parent.appendChild(element);
+  return element;
+}
+
+// Remove all log elements from the page
 function clearOutputLog(element) {
-  element.innerHTML = '';
+  while (element.childElementCount > 0) {
+    element.removeChild(element.lastChild);
+  }
 }
 
 // Colorize input data (convert it to a span) and add it to the element.

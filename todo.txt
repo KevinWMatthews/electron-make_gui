@@ -1,3 +1,9 @@
+Add a <pre> to the log for each child process.
+<pre id="pre_output_log"></pre>
+
+appendChild() vs innerHTML?
+what about document.fragment?
+
 Figure out how to execute processes sequentially:
     https://gist.github.com/millermedeiros/4724047
     May need async or promises.
@@ -5,7 +11,7 @@ Figure out how to execute processes sequentially:
         https://www.youtube.com/watch?v=9YkUCxvaLEk
     Use execFile() instead of spawn()?
 
-Do we need asynchronous execution?
+Do we need synchronous execution?
     Could we execute simultaneously and store the output in different buffers?
     Would be tough to print in real time, but we could:
         show/hide output from individual executables
