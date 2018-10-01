@@ -107,10 +107,11 @@ btn_run.addEventListener('click', (event) => {
   let commands = [...select_files.options].map(option => option.value);
   let args = [];
   let options = {'cwd': project_root};
-  let log = document.getElementById('pre_output_log');
-  clearOutputLog(log);
-  commands.forEach( (command) => {
-    spawnAndLog(command, args, options, log);
+  let log_base = document.getElementById('div_log');
+  clearOutputLog(log_base);
+  commands.forEach( (command, index) => {
+    let log_element = addLogElement(log_base, `output_clean_${index}`);
+    spawnAndLog(command, args, options, log_element);
   });
 });
 

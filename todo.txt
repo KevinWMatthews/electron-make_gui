@@ -1,5 +1,6 @@
 Add a <pre> to the log for each child process.
 <pre id="pre_output_log"></pre>
+    Is this scoping of log_element ok? Doesn't it go out of scope?
 
 appendChild() vs innerHTML?
 what about document.fragment?
