@@ -76,6 +76,7 @@ let select_files = document.getElementById('select_files');
 let select_files_add = document.getElementById('select_files_add');
 select_files_add.addEventListener('click', (event) => {
   let dialog_properties = {
+    defaultPath: project_root,
     properties: ['openFile', 'multiSelections']
   };
   file_paths = dialog.showOpenDialog(dialog_properties);
