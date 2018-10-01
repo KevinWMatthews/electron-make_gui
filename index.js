@@ -47,9 +47,10 @@ btn_compile.addEventListener('click', (event) => {
   let command = 'make';
   let args = ['CLICOLOR_FORCE=1'];
   let options = {'cwd': project_root};
-  let log = document.getElementById('pre_output_log');
-  clearOutputLog(log);
-  spawnAndLog(command, args, options, log);
+  let log_base = document.getElementById('div_log');
+  clearOutputLog(log_base);
+  let log_element = addLogElement(log_base, 'output_clean');
+  spawnAndLog(command, args, options, log_element);
 });
 
 let testWindow;
