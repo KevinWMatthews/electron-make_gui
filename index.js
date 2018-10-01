@@ -8,10 +8,6 @@ const Convert = require('ansi-to-html');
 let project_root;
 const convert = new Convert();
 
-// Testing only, because I'm too lazy to figure out the right way to test this.
-project_root = '/home/kevin/coding/c/build_terminate_program';
-document.getElementById('btn_select_source').innerHTML = project_root;
-
 let btn_select_source = document.getElementById('btn_select_source');
 btn_select_source.addEventListener('click', (event) => {
   let dialog_properties = {
